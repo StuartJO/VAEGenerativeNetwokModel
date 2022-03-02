@@ -1,4 +1,4 @@
-function [t,dir,l,L] = axonTrajectory(s,node_centres,b,delta)
+function [t,dir,axon_length,L] = axonTrajectory(s,node_centres,b,delta)
 
 % From Song 2014 PNAS
 
@@ -21,7 +21,5 @@ L = -sum(s_R./(s_R_mag).^(b+1));
 dir = L / sqrt( sum(L.^2,2) );
 
 axon_length = -delta .* log(rand(1, 'like', delta));
-
-l = log(axon_length)/delta;
 
 t = s + (dir.*axon_length);
